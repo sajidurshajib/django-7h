@@ -3,12 +3,29 @@
 {% block content %}
 <h2>Home</h2>
 
+<h3>Brows Topics</h3>
+
+<p>
+    <a href="{% url 'home' %}">All</a>
+    {% for topic in topics %}
+        <a href="{% url 'home' %}?q={{ topic.name }}">{{ topic.name }}</a> 
+        {% if forloop.counter != topics|length %}
+            <span>, </span>
+        {% endif %}   
+    {%  endfor %}
+</p>
+<hr>
+
 <a href="{% url 'create-room' %}">Create Room</a>
 <br>
+
+
+<h4>{{rooms_count}} rooms available.</h4>
 
 {% for room in rooms %}
     <span>@{{ room.host.username }}</span>
     <a href="{% url 'update-room' room.id %}">Edit room</a>
+    <a href="{% url 'delete-room' room.id %}">Delete room</a>
     <a href="{% url 'room' room.id %}">
         <h4>{{ room.id }} - {{ room.name }}</h4>
     </a>

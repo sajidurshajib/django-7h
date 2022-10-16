@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from django.db.models import Q
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 from .models import Room, Topic
 from .forms import RoomForm
 
@@ -13,6 +14,10 @@ from .forms import RoomForm
 
 
 def loginPage(request):
+
+    if request.user.is_authenticated:
+        return redirect('home')
+
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -30,7 +35,15 @@ def loginPage(request):
         else:
             messages.error(request, 'Username OR Password does not exist')
 
-    context = {}
+    page = 'login'
+    context = {'page': page}
+    return render(request, 'base/login_register.html', context)
+
+
+def registerPage(request):
+    page = 'register'
+    form = UserCreationForm()
+    context = {'page': page, 'form': form}
     return render(request, 'base/login_register.html', context)
 
 

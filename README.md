@@ -46,3 +46,11 @@ python3 manage.py runserver
 * regster in admin panel - Topic and Message
 * make create-room form and connect
 * create forms from django
+* make a function in views for create room
+* make another edit views and a url with params
+* make confirm delete page
+* room delete url
+* room delete views
+* home topic brows (filter)
+* navbar search topic, name, description
+* room available

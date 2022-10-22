@@ -70,7 +70,7 @@ def home(request):
     rooms = Room.objects.filter(Q(topic__name__icontains=q) | Q(name__icontains=q) | Q(description__icontains=q))
     topics = Topic.objects.all()
     rooms_count = rooms.count()
-    room_message = Message.objects.all()
+    room_message = Message.objects.filter(Q(room__topic__name__icontains=q))
     return render(request, 'base/home.html', {"rooms": rooms, "topics": topics, "rooms_count": rooms_count, "room_message": room_message})
 
 

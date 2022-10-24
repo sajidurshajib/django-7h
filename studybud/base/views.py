@@ -64,6 +64,21 @@ def logoutUser(request):
     return redirect('home')
 
 
+# update user with profile pic
+# al topics page
+# count with list
+# activity separate page
+
+
+def userProfile(request, id):
+    user = User.objects.get(id=id)
+    rooms = user.room_set.all()
+    topics = Topic.objects.all()
+    room_message = user.message_set.all()
+    context = {'user': user, 'rooms': rooms, 'room_message': room_message, 'topics': topics}
+    return render(request, 'base/profile.html', context)
+
+
 def home(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
 
@@ -93,6 +108,7 @@ def room(request, id):
     return render(request, 'base/room.html', context)
 
 
+# previous list or cerate topic fix
 @login_required(login_url='login')
 def createRoom(request):
     form = RoomForm()
@@ -100,7 +116,9 @@ def createRoom(request):
     if request.method == 'POST':
         form = RoomForm(request.POST)
         if form.is_valid():
-            form.save()
+            room = form.save(commit=False)
+            room.host = request.user
+            room.save()
             return redirect('home')
 
     context = {'form': form}

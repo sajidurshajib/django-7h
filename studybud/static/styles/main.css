@@ -69,10 +69,25 @@ body {
     border-radius: 10px;
 }
 
+/* 
+Button
+ */
+
+.btn{
+    display: inline-block;
+    border-radius: 50px;
+    padding: 7px 20px;
+}
+.btn-blue{
+    color: var(--white);
+    background: var(--blue);
+}
+
 a {
     text-decoration: none;
     color: var(--blue);
 }
+
 /* 
 ================
     Nav-bar 
@@ -133,5 +148,6 @@ a {
 .nav-bar > div:nth-child(3) > a{
     margin-left: 15px;
     font-weight: 600;
+    font-size: 12px;
     position: relative;
 }

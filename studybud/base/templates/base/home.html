@@ -1,7 +1,12 @@
 {% extends 'main.html' %}
 
 {% block content %}
+
 <h2>Home</h2>
+{% if not request.user.is_anonymous %}
+    <p>{{ request.user.first_name }} {{ request.user.last_name }}</p>
+    <p>@{{ request.user }}</p>
+{% endif %}
 
 <div>
     {% include 'base/components/topics.html' %}

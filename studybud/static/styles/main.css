@@ -20,12 +20,12 @@ body {
     height: 100%;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif !important;
     background-image: linear-gradient(rgba(193, 232, 255, 0.5), rgba(219, 151, 250, 0.5));
 }
 
 .wrapper {
-    margin: 10px;
+    margin: 0 50px;
 }
 
 .container {
@@ -81,6 +81,10 @@ Button
 .btn-blue{
     color: var(--white);
     background: var(--blue);
+}
+
+h1,h2,h3,h4,h5,h6{
+    color: var(--grey-dark);
 }
 
 a {
@@ -150,4 +154,60 @@ a {
     font-weight: 600;
     font-size: 12px;
     position: relative;
+}
+
+/* 
+=============
+    Home 
+=============
+*/
+
+.home-wrapper{
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0,7fr) minmax(0, 3fr);
+    gap: 15px;
+    margin-top: 50px;
+}
+.home-wrapper > div{
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+
+/*
+==================== 
+    Brows topics
+====================
+*/
+
+.topics > h2{
+    margin: 5px 0 20px 0;
+    display: block;
+    text-align: center;
+}
+.topics >a{
+    display: block;
+    padding: 7px 15px 7px 25px;
+    font-size: 18px;
+    border-radius: 2px;
+    position: relative;
+}
+.topics > a::before{
+    content: '';
+    position: absolute;
+    top: 14px;
+    left: 10px;
+    width: 8px;
+    height: 8px;
+    border-radius: 8px;
+    background: var(--purple);
+    visibility: hidden;
+}
+.topics > a:hover, .topics > a:focus{
+    color: var(--purple);
+    background: var(--white);
+}
+.topics >a:hover::before{
+    visibility: visible;
 }

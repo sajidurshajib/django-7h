@@ -27,6 +27,9 @@
         {% include 'base/components/recent_activity.html' %}
     </div>
 
+    <p>{{ room_paginate.per_page }}</p>
+    <p>{{ rooms.has_next }}</p>    
+
 </div>
 
 {% endblock %}

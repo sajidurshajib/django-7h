@@ -83,19 +83,19 @@ def userProfile(request, id):
 def home(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
 
-    rooms = Room.objects.filter(Q(topic__name__icontains=q) | Q(name__icontains=q) | Q(description__icontains=q))
+    rooms_query = Room.objects.filter(Q(topic__name__icontains=q) | Q(name__icontains=q) | Q(description__icontains=q))
 
     # for paginations
-    page = request.GET.get('page')
+    page = request.GET.get('page') if request.GET.get('page') != None else 1
     limit = request.GET.get('limit') if request.GET.get('limit') != None else 5
-    rooms_paginate = Paginator(rooms, limit)
-    rooms_then = rooms_paginate.get_page(page)
+    rooms_paginate = Paginator(rooms_query, limit)
+    rooms = rooms_paginate.get_page(page)
 
     topics = Topic.objects.all()
-    rooms_count = rooms.count()
+    rooms_count = rooms_query.count()
 
     room_message = Message.objects.filter(Q(room__topic__name__icontains=q))
-    return render(request, 'base/home.html', {"rooms": rooms_then, "room_paginate": rooms_paginate, "topics": topics, "rooms_count": rooms_count, "room_message": room_message})
+    return render(request, 'base/home.html', {"rooms": rooms, "room_paginate": rooms_paginate, "topics": topics, "rooms_count": rooms_count, "room_message": room_message})
 
 
 def room(request, id):

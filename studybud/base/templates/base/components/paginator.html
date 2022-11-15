@@ -1,0 +1,15 @@
+<div class="paginator">
+    {% if rooms.has_previous %}
+        <a href="{% url 'home' %}?page={{ rooms.previous_page_number }}"> < </a>  
+    {% else %}  
+        <a href="" class="paginator-disable"> < </a>  
+    {% endif %}
+
+    <span>{{ rooms.number }} of {{ room_paginate.num_pages }}</span>
+
+    {% if rooms.has_next %}
+        <a href="{% url 'home' %}?page={{ rooms.next_page_number }}"> > </a>    
+    {% else %}  
+        <a href="" class="paginator-disable"> > </a>  
+    {% endif %}
+</div>

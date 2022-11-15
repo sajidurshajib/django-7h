@@ -170,6 +170,7 @@ hr{
     grid-template-columns: minmax(0, 2fr) minmax(0,7fr) minmax(0, 3fr);
     gap: 15px;
     margin-top: 50px;
+    padding-bottom: 50px;
 }
 .home-wrapper > div{
     background-color: rgba(255, 255, 255, 0.7);
@@ -183,6 +184,39 @@ hr{
 .create-room-btn{
     float: right;
 }
+
+/* 
+==================
+    Paginator
+==================
+*/
+.paginator{
+    margin: 30px auto;
+}
+.paginator > span{
+    color: var(--blue);
+    font-size: 14px;
+    margin: 0 10px;
+    border: 1px solid var(--blue);
+    padding: 4px 15px;
+    border-radius: 4px;
+}
+.paginator > a{
+    color: var(--white);
+    background: var(--blue);
+    font-size: 14px;
+    border: 1px solid var(--blue);
+    padding: 4px 15px;
+    border-radius: 4px;
+}
+.paginator > a.paginator-disable{
+    pointer-events: none;
+    color: var(--white);
+    border: 1px solid var(--grey);
+    background: var(--grey);
+}
+
+
 
 /*
 ==================== 
